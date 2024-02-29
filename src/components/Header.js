@@ -18,7 +18,7 @@ const {loggedInUser} = useContext(UserContext)
 const cartitems = useSelector((store)=> store.cart.items)
 
 
-console.log(cartitems)
+// console.log(cartitems)
 
 return(
     <div className = "flex  bg-yellow-50 shadow-lg mb-2">
@@ -27,8 +27,8 @@ return(
             
         </div>
         
-    <div className="flex items-center">
-        <ul className="flex p-4 mr-4 absolute">
+    <div className="flex  items-center">
+        <ul className="flex  justify-evenly  p-4 mr-4 absolute">
 
             <li className="px-2">Online :{onlineStatus ? "🟢" : "🔴"}</li>
             <li className="px-2">
@@ -37,7 +37,7 @@ return(
             <li className="px-2"><Link className="links_a" to = "/about">About Us</Link></li>
             <li className="px-2"><Link className="links_a" to = "/contact">Contact Us</Link></li>
             <li className="px-2"><Link className="links_a" to = "/grocery">Grocery</Link></li>
-            <li className="px-2 font-bold text-xl"><Link className="links_a" to = "/cart">Cart - ({cartitems.length})</Link></li>
+            <li className="px-2 font-bold text-xl"><Link className="links_a" data-testid = "cartBtn"  to = "/cart">Cart - ({cartitems.length})</Link></li>
             <button className="px-2" onClick={()=>
             {
                
@@ -53,7 +53,7 @@ return(
 
             // Ternary Operator is Used    
             btn_log === "Login" ? setlog("LogOut") : setlog("Login"); 
-
+               
             }
             }>{btn_log}</button>
             <li className="font-bold" >{loggedInUser}</li>

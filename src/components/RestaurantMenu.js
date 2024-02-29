@@ -13,19 +13,19 @@ const RestaurantMenu = () =>{
 
     const resInfo = useRestaurantMenu(resId)
 
-    const [showIndex,setshowIndex]  = useState(0)
+    const [showIndex,setshowIndex]  = useState("")
 
     if(resInfo === null) return <Shimmer/>
 
-   const {name,cuisines} = resInfo.cards[2]?.card?.card?.info;
-    // console.log(resInfo)
+    const {name,cuisines} = resInfo.cards[0]?.card?.card?.info;
+//  console.log(resInfo)
   
-    // console.log(resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
-    const ListCategory = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>
+    // console.log("resInfo ",resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards)
+    const ListCategory = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>
     c?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
     
-    // const ListCategory1 = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>
-    // c?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory" )
+    const ListCategory1 = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>
+    c?.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.NestedItemCategory" )
 
     
     
@@ -33,9 +33,9 @@ const RestaurantMenu = () =>{
         
        return (
             <div className="text-center ">
-                <h1 className="font-extrabold">{name}</h1>
+           
+           <h1 className="font-extrabold">{name}</h1>
                 <h2 className="font-bold">{cuisines.join(" ,")}</h2>
-               
                 {ListCategory.map((list_cat,index)=> ( 
                 // Controlled component by RestaurantMenu
                    <ResCategory key={list_cat.card.card.title} 
